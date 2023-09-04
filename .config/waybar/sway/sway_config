@@ -1,0 +1,67 @@
+{
+	"layer": "top",
+	"modules-left": ["cpu", "memory","custom/battery-health","custom/charging-mode"],
+	"modules-center": ["clock","battery"],
+	"modules-right": [
+		"custom/keyboard-layout",
+		"bluetooth",
+		"pulseaudio",
+		"backlight"
+	],
+
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-muted": "{icon} {volume}%",
+		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+
+	"network": {
+		"tooltip": false,
+		"format-wifi": "  {essid}",
+		"format-ethernet": ""
+	},
+	"backlight": {
+		"tooltip": false,
+		"format": " {}%",
+		"interval":1,
+        "on-scroll-up": "light -A 5",
+		"on-scroll-down": "light -U 5"
+	},
+	"battery": {
+		"states": {
+		    "good": 80,
+		    "warning": 30,
+		    "critical": 20
+		},
+		"format-time": "{H}h{M} remaining",
+		"format": "{time} {icon}  {capacity}%",
+		"format-charging": "{time}  {capacity}%",
+		"format-plugged": " {capacity}%",
+		"format-icons": ["", "", "", "", ""]
+	},
+	"custom/charging-mode":{
+		"format": "{}, max: {percentage}%",
+		"interval": 1,
+		"return-type": "json",
+		"exec": "~/.config/waybar/scripts/battery_modifier.sh",
+		"on-click": "~/.config/waybar/scripts/battery_modifier.sh toggle",
+		"exec-on-event": true
+	},
+	"custom/keyboard-layout":{
+			"format": "{}",
+			"return-type": "json",
+			"interval":1,
+			"exec": "~/.config/waybar/scripts/keyboard_layout.sh",
+			"on-click": "~/.config/waybar/scripts/keyboard_layout.sh next",
+			"exec-on-event": true
+		},
+	"tray":{ "icon-size":18, "spacing": 10 },
+	"clock": { "format": "{:  %Hh%M   %Y-%m-%d}" },
+	"cpu": { "interval": 15, "format": "CPU:  {}%", "max-length": 16 },
+	"memory": { "interval": 30, "format": "RAM: {}%", "max-length": 10 },
+}
