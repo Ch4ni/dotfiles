@@ -30,7 +30,8 @@ $time\
 # add_newline = false
 
 # Set the color palette to use
-palette = 'solarized-dark'
+# palette = 'solarized-dark'
+palette = 'pastel'
 
 [palettes.pastel]
 section-user-bg   = '#9A348E'
