@@ -1,0 +1,189 @@
+format = """
+[](section-user-bg)\
+$os\
+$username\
+[](bg:section-dir-bg fg:section-user-bg)\
+$directory\
+[](fg:section-dir-bg bg:section-git-bg)\
+$git_branch\
+$git_status\
+[](fg:section-git-bg bg:section-plugin-bg)\
+$c\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+[](fg:section-plugin-bg bg:section-docker-bg)\
+$docker_context\
+[](fg:section-docker-bg bg:section-time-bg)\
+$time\
+[ ](fg:section-time-bg)\
+"""
+
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+# Set the color palette to use
+palette = 'solarized-dark'
+
+[palettes.pastel]
+section-user-bg   = '#9A348E'
+section-user-fg   = '#000000'
+section-dir-bg    = '#DA627D'
+section-dir-fg    = '#000000'
+section-git-bg    = '#FCA17D'
+section-git-fg    = '#000000'
+section-plugin-bg = '#86BBD8'
+section-plugin-fg = '#000000'
+section-docker-bg = '#06969A'
+section-docker-fg = '#000000'
+section-time-bg   = '#33658A'
+section-time-fg   = '#aaaaaa'
+
+[palettes.solarized-dark]
+# solarized dark color definitions
+base03  = "#002b36"	# dark background
+base02  = "#073642"	# dark background highlights
+base01  = "#586e75"	# comments / secondary content
+base00  = "#657b83"	# - darker content tone
+base0   = "#839496"	# body text/default code/primary content
+base1   = "#93a1a1"	# optional emphasized content
+base2   = "#eee8d5"	# light background highlights
+base3   = "#fdf6e3"	# light background
+yellow  = "#b58900"
+orange  = "#cb4b16"
+red     = "#dc322f"
+magenta = "#d33682"
+violet  = "#6c71c4"
+blue    = "#268bd2"
+cyan    = "#2aa198"
+green   = "#859900"
+
+# mapping solarized-dark to sections
+section-user-bg   = "#6c71c4" # violet
+section-user-fg   = "#002336" # base03
+section-dir-bg    = '#268bd2' # blue
+section-dir-fg    = '#002336' # base03
+section-git-bg    = '#2aa198' # cyan
+section-git-fg    = '#002336' # base03
+section-plugin-bg = '#586e75' # base01
+section-plugin-fg = '#002b36' # base03
+section-docker-bg = '#073642' # base02
+section-docker-fg = '#002b36' # base03
+section-time-bg   = '#586e75' # base01
+section-time-fg   = '#002b36' # base03
+
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
+[username]
+show_always = true
+style_user = "bg:section-user-bg fg:section-user-fg"
+style_root = 'bg:section-user-bg fg:section-user-fg'
+format = '[$user ]($style)'
+disabled = false
+
+# An alternative to the username module which displays a symbol that
+# represents the current operating system
+[os]
+style = "bg:section-user-bg"
+disabled = false # Disabled by default
+
+[directory]
+style = "bg:section-dir-bg fg:section-dir-fg"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = "  "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important  " = "  "
+
+[c]
+symbol = " "
+style = "bg:section-plugin-bg fg:section-plugin-fg"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:section-docker-bg fg:section-docker-fg"
+format = '[ $symbol $context ]($style) $path'
+
+[elixir]
+symbol = " "
+style = "bg:section-plugin-bg fg:section-plugin-fg"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "bg:section-plugin-bg fg:section-plugin-fg"
+format = '[ $symbol ($version) ]($style)'
+
+[git_branch]
+symbol = ""
+style = "bg:section-git-bg fg:section-git-fg"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:section-git-bg fg:section-git-fg"
+format = '[$all_status$ahead_behind ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:section-plugin-bg fg:section-plugin-fg"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:section-plugin-bg fg:section-plugin-fg"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "bg:section-plugin-bg fg:section-plugin-fg"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "bg:section-plugin-bg fg:section-plugin-fg"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:section-plugin-bg fg:section-plugin-fg"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = " "
+style = "bg:section-plugin-bg fg:section-plugin-fg"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:section-plugin-bg fg:section-plugin-fg"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "bg:section-plugin-bg fg:section-plugin-fg"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:section-time-bg fg:section-time-fg"
+format = '[ ♥ $time ]($style)'
